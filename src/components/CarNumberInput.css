@@ -1,0 +1,24 @@
+.header {
+    /* width: 100%; */
+
+    padding: 1em 1em 1em;
+    background-color: #3f51b5;
+}
+
+.search-form {
+    padding-bottom: 0.5em;
+}
+.search-form__title {
+    color: white;
+}
+
+.search-form__input {
+    width: 100%;
+    padding: 0.5em;
+    box-sizing: border-box;
+    font-size: 1.1em;
+}
+
+.header__error-text {
+    color: white;
+}
