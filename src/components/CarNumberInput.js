@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { searchCar } from "../redux/actions/rootActions";
 import { setCarNumberInputError } from "../redux/actions/rootActions";
 
-const UKRAINIAN_CAR_NUMBER_REGEXP = /^[АВЕІКМНОРСТХABEIKMHOPCTX]{2}[0-9]{4}[АВЕІКМНОРСТХABEIKMHOPCTX]{2}$/;
+const UKRAINIAN_CAR_NUMBER_REGEXP = /^[АВЕІКМНОРСТХABEIKMHOPCTX]{2}[0-9]{4}[АВЕІКМНОРСТХABEIKMHOPCTX]{2}$/; // АВЕІКМНОРСТХABEIKMHOPCTX - it is not twice copied string, it is cyrillic and latin letters
 
 class CarNumberInput extends Component {
     static propTypes = {
@@ -40,6 +40,7 @@ class CarNumberInput extends Component {
     };
 
     shouldComponentUpdate(_nextProps, nextState) {
+        //we don't want to spam Redux store every time, when user input a character into the input field, so we write there only if error flag toggled
         if (nextState.isInputError !== this.state.isInputError) {
             this.props.setCarNumberInputError(nextState.isInputError);
         }
@@ -71,10 +72,9 @@ class CarNumberInput extends Component {
         );
     }
 }
-const mapStateToProps = _state => ({});
 const mapDispatchToProps = { searchCar, setCarNumberInputError };
 
 export default connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
 )(CarNumberInput);

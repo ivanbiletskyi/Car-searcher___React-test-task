@@ -1,6 +1,7 @@
 import Actions from "../constants/actionTypes";
 
 const defaultInputState = {
+    //we need this flag in store to hide previous carInfo if user tried find another car, but had an error on carNumberInput
     isError: false
 };
 

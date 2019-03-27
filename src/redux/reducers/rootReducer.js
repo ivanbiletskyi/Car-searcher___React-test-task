@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import car from "./car";
-import input from "./input";
+import carNumberInput from "./carNumberInput";
 export default combineReducers({
     car,
-    input
+    carNumberInput
 });

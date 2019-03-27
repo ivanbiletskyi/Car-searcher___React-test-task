@@ -3,7 +3,7 @@ const url = require("url");
 
 const port = 8080;
 const carInfoPath = "/api/v1/car-info/";
-const carNumberRegExp = /^[АВЕІКМНОРСТХABEIKMHOPCTX]{2}[0-9]{4}[АВЕІКМНОРСТХABEIKMHOPCTX]{2}$/;
+const carNumberRegExp = /^[АВЕІКМНОРСТХABEIKMHOPCTX]{2}[0-9]{4}[АВЕІКМНОРСТХABEIKMHOPCTX]{2}$/; // АВЕІКМНОРСТХABEIKMHOPCTX - it is not twice copied string, it is cyrillic and latin letters
 
 const dataMap = [
     {
@@ -159,7 +159,6 @@ const server = http.createServer((request, response) => {
 
     if (pathname.startsWith(carInfoPath)) {
         const carNumber = decodeURI(pathname.substr(carInfoPath.length));
-        console.log("requested ", carNumber);
         // invalid request
         if (!carNumberRegExp.test(carNumber)) {
             response.statusCode = 400;
